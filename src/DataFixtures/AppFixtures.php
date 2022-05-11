@@ -20,9 +20,16 @@ class AppFixtures extends Fixture
         UserFactory::createMany(40);
         BookFactory::createMany(60);
 
+        
+
         ReviewFactory::createMany(20, [
             'book' => BookFactory::random(),
             'author' => UserFactory::random() 
+        ]);
+
+        PhysicalBookFactory::createMany(100, [
+            'book' => BookFactory::random(),
+            'owner' => UserFactory::random()
         ]);
         
         BorrowFactory::createMany(15, [
@@ -30,10 +37,6 @@ class AppFixtures extends Fixture
             'borrower' => UserFactory::random()
         ]);
         
-        PhysicalBookFactory::createMany(100, [
-            'book' => BookFactory::random(),
-            'owner' => UserFactory::random()
-        ]);
 
         $manager->flush();
     }

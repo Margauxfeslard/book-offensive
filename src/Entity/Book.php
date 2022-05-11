@@ -44,7 +44,7 @@ class Book
     #[ORM\OneToMany(mappedBy: 'physicalBook', targetEntity: Borrow::class)]
     public Collection $borrows;
 
-    #[ORM\OneToMany(mappedBy: 'book', targetEntity: PhysicalBook::class)]
+    #[ORM\OneToMany(mappedBy: 'book', targetEntity: PhysicalBook::class, orphanRemoval: true)]
     public Collection $physicalBooks;
 
     #[ORM\OneToMany(mappedBy: 'book', targetEntity: Review::class)]
