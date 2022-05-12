@@ -38,7 +38,8 @@ final class PhysicalBookFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
+            'book' => BookFactory::random(),
+            'owner' => UserFactory::random(),
         ];
     }
 

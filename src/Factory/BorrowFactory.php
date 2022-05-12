@@ -41,6 +41,8 @@ final class BorrowFactory extends ModelFactory
             'startDate' => self::faker()->dateTimeBetween('-40 days', '-5 days'),
             'restitutionDate' => self::faker()->dateTimeBetween('5 days', '30 days'),
             'provisionalEndDate' => self::faker()->dateTimeBetween('2 days', '20 days'),
+            'physicalBook' => PhysicalBookFactory::random(),
+            'borrower' => UserFactory::random(),
         ];
     }
 
