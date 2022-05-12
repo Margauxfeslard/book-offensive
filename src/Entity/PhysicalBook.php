@@ -6,7 +6,7 @@ use App\Repository\PhysicalBookRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Uuid;
+use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: PhysicalBookRepository::class)]
 class PhysicalBook
@@ -29,6 +29,7 @@ class PhysicalBook
     public function __construct()
     {
         $this->borrows = new ArrayCollection();
+        $this->id = Uuid::v4();
     }
 
     public function getId(): ?Uuid

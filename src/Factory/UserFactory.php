@@ -42,7 +42,7 @@ final class UserFactory extends ModelFactory
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'email' => self::faker()->email(),
-            'roles' => $roles[array_rand($roles)],
+            'roles' => [$roles[array_rand($roles)]],
             'password' => self::faker()->password(),
             'lastname' => self::faker()->lastName(),
             'firstname' => self::faker()->firstName(),

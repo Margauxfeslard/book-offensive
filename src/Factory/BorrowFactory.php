@@ -38,9 +38,9 @@ final class BorrowFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'startDate' => self::faker()->dateTimeBetween('-40 days', '-5 days'),
-            'restitutionDate' => self::faker()->dateTimeBetween('5 days', '30 days'),
-            'provisionalEndDate' => self::faker()->dateTimeBetween('2 days', '20 days'),
+            'startDate' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeBetween('-40 days', '-5 days')),
+            'restitutionDate' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeBetween('5 days', '30 days')),
+            'provisionalEndDate' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeBetween('2 days', '20 days')),
             'physicalBook' => PhysicalBookFactory::random(),
             'borrower' => UserFactory::random(),
         ];

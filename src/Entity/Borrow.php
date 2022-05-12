@@ -6,7 +6,7 @@ use App\Repository\BorrowRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Uuid;
+use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: BorrowRepository::class)]
 class Borrow
@@ -31,6 +31,11 @@ class Borrow
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'booksBorrow')]
     public User $borrower;
+
+    public function __construct()
+    {
+        $this->id = Uuid::v4();
+    }
 
     public function getId(): ?Uuid
     {

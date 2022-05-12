@@ -6,6 +6,7 @@ use App\Repository\ReviewRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 class Review
@@ -14,7 +15,7 @@ class Review
         ORM\Id,
         ORM\Column(type: 'uuid', unique: true)
     ]
-    private $id;
+    private Uuid $id;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reviews')]
     public User $author;
@@ -33,9 +34,10 @@ class Review
 
     public function __construct()
     {
+        $this->id = Uuid::v4();
     }
 
-    public function getId(): ?int
+    public function getId(): ?Uuid
     {
         return $this->id;
     }

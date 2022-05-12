@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Borrow;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class BorrowCrudController extends AbstractCrudController
 {
@@ -12,14 +13,11 @@ class BorrowCrudController extends AbstractCrudController
         return Borrow::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield AssociationField::new('physicalBook');
+        yield AssociationField::new('borrower');
     }
-    */
+    
 }
