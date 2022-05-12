@@ -40,7 +40,7 @@ final class ReviewFactory extends ModelFactory
         return [
             'note' => self::faker()->numberBetween(0, 5),
             'title' => self::faker()->realText(40),
-            'review' => self::faker()->text(),
+            'body' => self::faker()->text(),
             'author' => UserFactory::random(),
             'book' => BookFactory::random(),
         ];
