@@ -24,10 +24,6 @@ class AppFixtures extends Fixture
 
         BorrowFactory::createMany(50);
         
-        
-        // $product = new Product();
-        // $manager->persist($product);
-
         $manager->flush();
     }
 }
