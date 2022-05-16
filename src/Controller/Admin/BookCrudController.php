@@ -11,4 +11,8 @@ class BookCrudController extends AbstractCrudController
     {
         return Book::class;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9ed74ce (fixtures written and small crudController config)
 }
