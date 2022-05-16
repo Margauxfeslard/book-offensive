@@ -35,9 +35,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Physical Books', 'fas fa-layer-group', PhysicalBook::class);
         yield MenuItem::linkToCrud('Reviews', 'fas fa-file-pdf', Review::class);
         yield MenuItem::linkToCrud('Borrow', 'fas fa-calendar-days', Borrow::class);
-<<<<<<< HEAD
         
-=======
->>>>>>> 9ed74ce (fixtures written and small crudController config)
     }
 }
