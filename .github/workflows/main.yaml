@@ -1,0 +1,55 @@
+name: CI book offensive
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+          php-version:
+            - "8.1"
+    steps:
+      - name: Start PostgreSQL
+        run: |
+            sudo systemctl start postgresql.service
+            pg_isready
+            sudo -u postgres psql -c "create user symfony WITH PASSWORD 'ChangeMe';"
+            sudo -u postgres psql -c "create database app OWNER symfony;"
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_pgsql
+
+      - name: Install dependencies
+        uses: "ramsey/composer-install@v2"
+        with:
+           dependency-versions: "${{ matrix.dependencies }}"
+
+      - name: Run npm
+        run: |
+          npm install
+          npm run build
+
+      - name: Install PHPUnit
+        run: php vendor/bin/simple-phpunit install
+
+      - name: Run tests
+        env:
+          DATABASE_URL: postgresql://symfony:ChangeMe@localhost/app?serverVersion=14&charset=utf8
+        run: |
+          bin/console doctrine:migrations:migrate -n
+          bin/console doctrine:schema:validate
+          bin/phpunit
+
+      - name: Run php-cs-fixer
+        run: vendor/bin/php-cs-fixer fix --dry-run --diff
+

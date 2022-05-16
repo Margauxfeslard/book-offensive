@@ -11,7 +11,6 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
-    
     #[ORM\Id]
     #[ORM\Column(type: 'uuid', unique: true, nullable: false)]
     private Uuid $id;

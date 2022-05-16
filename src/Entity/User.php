@@ -105,6 +105,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->password = $password;
     }
 
+    public function getSalt()
+    {
+    }
+
+    public function getUsername()
+    {
+    }
+
     /**
      * @see UserInterface
      */
