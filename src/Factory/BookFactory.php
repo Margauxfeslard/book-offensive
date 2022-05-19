@@ -28,19 +28,12 @@ use Zenstruck\Foundry\Proxy;
  */
 final class BookFactory extends ModelFactory
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        // TODO inject services if required (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services)
-    }
-
     protected function getDefaults(): array
     {
         $categories = ['History', 'Politics', 'Ecology', 'Feminism', 'Antiracism', 'Military', 'Novel', 'Illustrated'];
         
         return [
-            'isbn' => self::faker()->text(10),
+            'isbn' => self::faker()->isbn10(),
             'title' => self::faker()->realText(40),
             'writerFirstName' => self::faker()->firstName(),
             'writerLastname' => self::faker()->lastName(),
@@ -53,10 +46,7 @@ final class BookFactory extends ModelFactory
 
     protected function initialize(): self
     {
-        // see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
-        return $this
-            // ->afterInstantiate(function(Book $book): void {})
-        ;
+        return $this;
     }
 
     protected static function getClass(): string

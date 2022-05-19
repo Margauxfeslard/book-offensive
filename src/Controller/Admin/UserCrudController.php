@@ -17,13 +17,11 @@ class UserCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        
         yield TextField::new('id')
                 ->onlyOnIndex();
         yield TextField::new('fullName')
                 ->hideOnForm();
         yield EmailField::new('email');
-        yield AssociationField::new('booksBorrow');
-        
+        yield AssociationField::new('booksBorrow');   
     }
 }

@@ -62,126 +62,64 @@ class Book
     {
         return $this->id;
     }
-
-    
-
-    /**
-     * Get the value of writerFirstname
-     */ 
-    public function getWriterFirstname()
+ 
+    public function getWriterFirstname(): string
     {
         return $this->writerFirstname;
     }
 
-    /**
-     * Set the value of writerFirstname
-     *
-     * @return  self
-     */ 
-    public function setWriterFirstname($writerFirstname)
+    public function setWriterFirstname(string $writerFirstname)
     {
         $this->writerFirstname = $writerFirstname;
-
-        return $this;
     }
 
-    /**
-     * Get the value of writerLastname
-     */ 
-    public function getWriterLastname()
+    public function getWriterLastname(): string
     {
         return $this->writerLastname;
     }
 
-    /**
-     * Set the value of writerLastname
-     *
-     * @return  self
-     */ 
-    public function setWriterLastname($writerLastname)
+    public function setWriterLastname(string $writerLastname)
     {
         $this->writerLastname = $writerLastname;
-
-        return $this;
     }
-
-    /**
-     * Get the value of category
-     */ 
-    public function getCategory()
+ 
+    public function getCategory(): string
     {
         return $this->category;
     }
 
-    /**
-     * Set the value of category
-     *
-     * @return  self
-     */ 
-    public function setCategory($category)
+    public function setCategory(string $category)
     {
         $this->category = $category;
-
-        return $this;
     }
 
-    /**
-     * Get the value of publisher
-     */ 
-    public function getPublisher()
+    public function getPublisher(): string
     {
         return $this->publisher;
     }
 
-    /**
-     * Set the value of publisher
-     *
-     * @return  self
-     */ 
-    public function setPublisher($publisher)
+    public function setPublisher(string $publisher)
     {
         $this->publisher = $publisher;
-
-        return $this;
     }
 
-    /**
-     * Get the value of summary
-     */ 
-    public function getSummary()
+    public function getSummary(): string
     {
         return $this->summary;
     }
 
-    /**
-     * Set the value of summary
-     *
-     * @return  self
-     */ 
-    public function setSummary($summary)
+    public function setSummary(string $summary)
     {
         $this->summary = $summary;
-
-        return $this;
     }
 
-    /**
-     * Get the value of language
-     */ 
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->language;
     }
 
-    /**
-     * Set the value of language
-     *
-     * @return  self
-     */ 
-    public function setLanguage($language)
+    public function setLanguage(string $language)
     {
         $this->language = $language;
-
-        return $this;
     }
 }
