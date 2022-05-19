@@ -6,6 +6,7 @@ use App\Repository\BookRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Nullable;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
@@ -29,9 +30,6 @@ class Book
     #[ORM\Column()]
     public string $writerLastname;
 
-    #[ORM\Column()]
-    public string $category;
-
     #[ORM\Column(nullable: true)]
     public string $publisher;
 
@@ -50,12 +48,16 @@ class Book
     #[ORM\OneToMany(mappedBy: 'book', targetEntity: Review::class)]
     public Collection $reviews;
 
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'books')]
+    public Collection $categories;
+
     public function __construct()
     {
         $this->physicalBooks = new ArrayCollection();
         $this->reviews = new ArrayCollection();
         $this->borrows = new ArrayCollection();
         $this->id = Uuid::v4();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): Uuid
@@ -81,16 +83,6 @@ class Book
     public function setWriterLastname(string $writerLastname)
     {
         $this->writerLastname = $writerLastname;
-    }
- 
-    public function getCategory(): string
-    {
-        return $this->category;
-    }
-
-    public function setCategory(string $category)
-    {
-        $this->category = $category;
     }
 
     public function getPublisher(): string
@@ -121,5 +113,25 @@ class Book
     public function setLanguage(string $language)
     {
         $this->language = $language;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category)
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
+    }
+
+    public function removeCategory(Category $category)
+    {
+        $this->categories->removeElement($category);
     }
 }

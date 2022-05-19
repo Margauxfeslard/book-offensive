@@ -29,15 +29,12 @@ use Zenstruck\Foundry\Proxy;
 final class BookFactory extends ModelFactory
 {
     protected function getDefaults(): array
-    {
-        $categories = ['History', 'Politics', 'Ecology', 'Feminism', 'Antiracism', 'Military', 'Novel', 'Illustrated'];
-        
+    {   
         return [
             'isbn' => self::faker()->isbn10(),
             'title' => self::faker()->realText(40),
             'writerFirstName' => self::faker()->firstName(),
             'writerLastname' => self::faker()->lastName(),
-            'category' => $categories[array_rand($categories)],
             'summary' => self::faker()->paragraph(),
             'publisher' => self::faker()->realText(30),
             'language' => self::faker()->countryCode(),
