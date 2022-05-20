@@ -46,5 +46,4 @@ class BookRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-    
 }

@@ -22,6 +22,6 @@ class UserCrudController extends AbstractCrudController
         yield TextField::new('fullName')
                 ->hideOnForm();
         yield EmailField::new('email');
-        yield AssociationField::new('booksBorrow');   
+        yield AssociationField::new('booksBorrow');
     }
 }

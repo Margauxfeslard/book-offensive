@@ -46,5 +46,4 @@ class CategoryRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
 }

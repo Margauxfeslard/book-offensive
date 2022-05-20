@@ -63,7 +63,7 @@ class Book
     {
         return $this->id;
     }
- 
+
     public function getWriterFirstname(): string
     {
         return $this->writerFirstname;

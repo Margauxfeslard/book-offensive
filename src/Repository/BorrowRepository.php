@@ -46,5 +46,4 @@ class BorrowRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
 }
