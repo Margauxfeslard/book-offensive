@@ -6,7 +6,6 @@ use App\Repository\BookRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Nullable;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
@@ -53,10 +52,10 @@ class Book
 
     public function __construct()
     {
+        $this->id = Uuid::v4();
         $this->physicalBooks = new ArrayCollection();
         $this->reviews = new ArrayCollection();
         $this->borrows = new ArrayCollection();
-        $this->id = Uuid::v4();
         $this->categories = new ArrayCollection();
     }
 
@@ -70,7 +69,7 @@ class Book
         return $this->writerFirstname;
     }
 
-    public function setWriterFirstname(string $writerFirstname)
+    public function setWriterFirstname(string $writerFirstname): void
     {
         $this->writerFirstname = $writerFirstname;
     }
@@ -80,7 +79,7 @@ class Book
         return $this->writerLastname;
     }
 
-    public function setWriterLastname(string $writerLastname)
+    public function setWriterLastname(string $writerLastname): void
     {
         $this->writerLastname = $writerLastname;
     }
@@ -90,7 +89,7 @@ class Book
         return $this->publisher;
     }
 
-    public function setPublisher(string $publisher)
+    public function setPublisher(string $publisher): void
     {
         $this->publisher = $publisher;
     }
@@ -100,7 +99,7 @@ class Book
         return $this->summary;
     }
 
-    public function setSummary(string $summary)
+    public function setSummary(string $summary): void
     {
         $this->summary = $summary;
     }
@@ -110,7 +109,7 @@ class Book
         return $this->language;
     }
 
-    public function setLanguage(string $language)
+    public function setLanguage(string $language): void
     {
         $this->language = $language;
     }
@@ -123,14 +122,14 @@ class Book
         return $this->categories;
     }
 
-    public function addCategory(Category $category)
+    public function addCategory(Category $category): void
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
         }
     }
 
-    public function removeCategory(Category $category)
+    public function removeCategory(Category $category): void
     {
         $this->categories->removeElement($category);
     }

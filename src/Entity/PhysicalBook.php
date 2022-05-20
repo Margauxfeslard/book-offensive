@@ -28,8 +28,8 @@ class PhysicalBook
 
     public function __construct()
     {
-        $this->borrows = new ArrayCollection();
         $this->id = Uuid::v4();
+        $this->borrows = new ArrayCollection();
     }
 
     public function getId(): ?Uuid

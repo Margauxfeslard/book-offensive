@@ -25,8 +25,8 @@ class Category
 
     public function __construct()
     {
-        $this->books = new ArrayCollection();
         $this->id = Uuid::v4();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): Uuid
@@ -39,7 +39,7 @@ class Category
         return $this->name;
     }
 
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -52,7 +52,7 @@ class Category
         return $this->books;
     }
 
-    public function addBook(Book $book)
+    public function addBook(Book $book): void
     {
         if (!$this->books->contains($book)) {
             $this->books[] = $book;
@@ -60,7 +60,7 @@ class Category
         }
     }
 
-    public function removeBook(Book $book)
+    public function removeBook(Book $book): void
     {
         if ($this->books->removeElement($book)) {
             $book->removeCategory($this);
