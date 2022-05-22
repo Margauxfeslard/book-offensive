@@ -11,14 +11,13 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
-    #[
-        ORM\Id,
-        ORM\Column(type: 'uuid', unique: true, nullable: false)
-    ]
+    
+    #[ORM\Id]
+    #[ORM\Column(type: 'uuid', unique: true, nullable: false)]
     private Uuid $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    public $name;
+    #[ORM\Column()]
+    public string $name;
 
     #[ORM\ManyToMany(targetEntity: Book::class, mappedBy: 'categories')]
     public Collection $books;

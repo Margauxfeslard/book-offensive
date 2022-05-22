@@ -11,10 +11,8 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: PhysicalBookRepository::class)]
 class PhysicalBook
 {
-    #[
-        ORM\Id,
-        ORM\Column(type: 'uuid', unique: true)
-    ]
+    #[ORM\Id]
+    #[ORM\Column(type: 'uuid', unique: true)]
     private Uuid $id;
 
     #[ORM\ManyToOne(targetEntity: Book::class, inversedBy: 'physicalBooks')]

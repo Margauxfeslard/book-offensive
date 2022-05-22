@@ -9,10 +9,8 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: BorrowRepository::class)]
 class Borrow
 {
-    #[
-        ORM\Id,
-        ORM\Column(type: 'uuid', unique: true)
-    ]
+    #[ORM\Id]
+    #[ORM\Column(type: 'uuid', unique: true)]
     private Uuid $id;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]

@@ -9,10 +9,8 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 class Review
 {
-    #[
-        ORM\Id,
-        ORM\Column(type: 'uuid', unique: true)
-    ]
+    #[ORM\Id]
+    #[ORM\Column(type: 'uuid', unique: true)]
     private Uuid $id;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reviews')]

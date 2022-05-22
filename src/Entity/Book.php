@@ -11,10 +11,8 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 class Book
 {
-    #[
-        ORM\Id,
-        ORM\Column(type: 'uuid', unique: true)
-    ]
+    #[ORM\Id]
+    #[ORM\Column(type: 'uuid', unique: true)]
     private Uuid $id;
 
     #[ORM\Column()]

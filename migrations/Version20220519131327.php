@@ -14,12 +14,11 @@ final class Version20220519131327 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Add Categories';
     }
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE book_category (book_id UUID NOT NULL, category_id UUID NOT NULL, PRIMARY KEY(book_id, category_id))');
         $this->addSql('CREATE INDEX IDX_1FB30F9816A2B381 ON book_category (book_id)');
         $this->addSql('CREATE INDEX IDX_1FB30F9812469DE2 ON book_category (category_id)');
@@ -34,7 +33,6 @@ final class Version20220519131327 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
         $this->addSql('ALTER TABLE book_category DROP CONSTRAINT FK_1FB30F9812469DE2');
         $this->addSql('DROP TABLE book_category');
