@@ -27,6 +27,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private string $password;
 
+    private ?string $plainPassword;
+
     #[ORM\Column()]
     public string $lastname;
 
@@ -118,10 +120,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function eraseCredentials()
     {
+        $this->plainPassword = null;
     }
 
     public function getFullName(): string
     {
         return $this->firstname.' '.$this->lastname;
+    }
+
+    public function getPlainPassword(): string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
     }
 }

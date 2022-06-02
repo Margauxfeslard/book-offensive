@@ -19,6 +19,12 @@ class AppFixtures extends Fixture
 
         UserFactory::createMany(40);
 
+        UserFactory::createOne([
+            'email' => 'test_admin@example.com',
+            'firstname' => 'John',
+            'lastname' => 'Doe',
+        ]);
+
         BookFactory::createMany(100, function () {
             return [
                 'categories' => CategoryFactory::randomRange(1, 4),

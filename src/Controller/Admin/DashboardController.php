@@ -37,5 +37,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Reviews', 'fas fa-file-pdf', Review::class);
         yield MenuItem::linkToCrud('Borrow', 'fas fa-calendar-days', Borrow::class);
         yield MenuItem::linkToCrud('Categories', 'fas fa-tags', Category::class);
+        yield MenuItem::linkToRoute('Log In', 'fas fa-key', 'app_login');
     }
 }
