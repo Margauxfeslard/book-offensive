@@ -36,7 +36,7 @@ final class UserFactory extends ModelFactory
         parent::__construct();
         $this->passwordHasher = $passwordHasher;
     }
-    
+
     protected function getDefaults(): array
     {
         $roles = ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN'];
