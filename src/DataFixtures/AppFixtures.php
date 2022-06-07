@@ -23,6 +23,7 @@ class AppFixtures extends Fixture
             'email' => 'test_admin@example.com',
             'firstname' => 'John',
             'lastname' => 'Doe',
+            'roles' => ['ROLE_ADMIN', 'ROLE_USER'],
         ]);
 
         BookFactory::createMany(100, function () {
