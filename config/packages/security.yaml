@@ -31,6 +31,7 @@ security:
                 signature_properties: ['password']
             logout: 
                 target: /login
+            access_denied_handler: App\Security\AccessDeniedHandler
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
