@@ -33,6 +33,11 @@ class Borrow
         $this->id = Uuid::v4();
     }
 
+    public function __toString()
+    {
+        return $this->borrower->getFullName();
+    }
+
     public function getId(): ?Uuid
     {
         return $this->id;
