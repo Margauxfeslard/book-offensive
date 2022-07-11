@@ -14,13 +14,13 @@ class Borrow
     private Uuid $id;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
-    public \DateTimeImmutable $provisionalEndDate;
+    public ?\DateTimeImmutable $provisionalEndDate = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
-    public \DateTimeImmutable $startDate;
+    public ?\DateTimeImmutable $startDate = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
-    public \DateTimeImmutable $restitutionDate;
+    public ?\DateTimeImmutable $restitutionDate = null;
 
     #[ORM\ManyToOne(targetEntity: PhysicalBook::class, inversedBy: 'borrows')]
     public PhysicalBook $physicalBook;

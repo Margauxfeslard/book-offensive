@@ -33,7 +33,7 @@ final class BookFactory extends ModelFactory
         return [
             'isbn' => self::faker()->isbn10(),
             'title' => self::faker()->realText(40),
-            'writerFirstName' => self::faker()->firstName(),
+            'writerFirstname' => self::faker()->firstName(),
             'writerLastname' => self::faker()->lastName(),
             'summary' => self::faker()->paragraph(),
             'publisher' => self::faker()->realText(30),

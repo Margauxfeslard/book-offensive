@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 class Book
@@ -15,25 +16,34 @@ class Book
     #[ORM\Column(type: 'uuid', unique: true)]
     private Uuid $id;
 
-    #[ORM\Column()]
+    #[
+        ORM\Column(),
+        Assert\NotNull
+    ]
     public string $isbn;
 
-    #[ORM\Column()]
+    #[
+        ORM\Column(),
+        Assert\NotNull
+    ]
     public string $title;
 
     #[ORM\Column(nullable: true)]
-    public string $writerFirstname;
-
-    #[ORM\Column()]
-    public string $writerLastname;
+    public ?string $writerFirstname = null;
 
     #[ORM\Column(nullable: true)]
-    public string $publisher;
+    public ?string $writerLastname = null;
 
     #[ORM\Column(nullable: true)]
-    public string $language;
+    public ?string $publisher = null;
 
-    #[ORM\Column(type: 'text')]
+    #[ORM\Column(nullable: true)]
+    public ?string $language = null;
+
+    #[
+        ORM\Column(type: 'text'),
+        Assert\NotNull
+    ]
     public string $summary;
 
     #[ORM\OneToMany(mappedBy: 'physicalBook', targetEntity: Borrow::class)]
@@ -60,75 +70,5 @@ class Book
     public function getId(): Uuid
     {
         return $this->id;
-    }
-
-    public function getWriterFirstname(): string
-    {
-        return $this->writerFirstname;
-    }
-
-    public function setWriterFirstname(string $writerFirstname): void
-    {
-        $this->writerFirstname = $writerFirstname;
-    }
-
-    public function getWriterLastname(): string
-    {
-        return $this->writerLastname;
-    }
-
-    public function setWriterLastname(string $writerLastname): void
-    {
-        $this->writerLastname = $writerLastname;
-    }
-
-    public function getPublisher(): string
-    {
-        return $this->publisher;
-    }
-
-    public function setPublisher(string $publisher): void
-    {
-        $this->publisher = $publisher;
-    }
-
-    public function getSummary(): string
-    {
-        return $this->summary;
-    }
-
-    public function setSummary(string $summary): void
-    {
-        $this->summary = $summary;
-    }
-
-    public function getLanguage(): string
-    {
-        return $this->language;
-    }
-
-    public function setLanguage(string $language): void
-    {
-        $this->language = $language;
-    }
-
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategories(): Collection
-    {
-        return $this->categories;
-    }
-
-    public function addCategory(Category $category): void
-    {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-        }
-    }
-
-    public function removeCategory(Category $category): void
-    {
-        $this->categories->removeElement($category);
     }
 }
