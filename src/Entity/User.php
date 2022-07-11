@@ -29,11 +29,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     private ?string $plainPassword;
 
-    #[ORM\Column()]
-    public string $lastname;
+    #[ORM\Column(nullable: true)]
+    public ?string $lastname = null;
 
-    #[ORM\Column()]
-    public string $firstname;
+    #[ORM\Column(nullable: true)]
+    public ?string $firstname = null;
 
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: PhysicalBook::class)]
     public Collection $booksOwned;
@@ -123,7 +123,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->plainPassword = null;
     }
 
-    public function getFullName(): string
+    public function getFullName(): ?string
     {
         return $this->firstname.' '.$this->lastname;
     }

@@ -20,13 +20,13 @@ class Review
     public Book $book;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    public int $note;
+    public ?int $note = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    public string $title;
+    public ?string $title = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    public string $body;
+    public ?string $body = null;
 
     public function __construct()
     {
